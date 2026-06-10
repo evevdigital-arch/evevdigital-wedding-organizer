@@ -635,27 +635,58 @@
     }
     
     .star { color: #f5b042; }
-    
-    /* Hamburger */
+       /* Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      z-index: 200;
     }
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: white;
-      transition: all 0.3s;
+      width: 24px; height: 2px;
+      background: #1a1a2e;
+      transition: 0.3s;
     }
-    .nav-glass.scrolled .hamburger span { background: #1a1a2e; }
+    .nav-glass:not(.scrolled) .hamburger span { background: white; }
+    
     @media (max-width: 768px) {
+      .nav-links, .nav-glass .btn-solid { display: none; }
       .hamburger { display: flex; }
-      .nav-links { display: none !important; }
     }
+    
+    /* ====== WATERMARK ====== */
+    .evev-watermark {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.1);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #888;
+      opacity: 0.3;
+      transition: all 0.4s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+    }
+    .evev-watermark:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.9);
+      color: #0a0a0a;
+      border-color: rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .hero-bg .evev-watermark { border-color: rgba(255,255,255,0.2); color: white; }
     
     /* Masonry-ish gallery heights */
     .gallery-item:nth-child(1) { grid-row: span 2; }
@@ -1452,9 +1483,21 @@
     </div>
   </div>
 
+  <!-- ==================== WATERMARK ==================== -->
+  <a href="https://github.com/evevdigital-arch" target="_blank" class="evev-watermark" aria-label="Designed by evevdigital">
+    <i data-lucide="droplet" style="width:12px;height:12px;"></i>
+    evevdigital
+  </a>
 
   <!-- ==================== JAVASCRIPT ==================== -->
   <script>
+    // Console Watermark
+    console.log(
+      "%c✨ Designed & Developed by evevdigital ✨",
+      "color: #D4AF37; font-size: 16px; font-weight: bold; background: #0a0a0a; padding: 10px 20px; border-radius: 8px;"
+    );
+    console.log("https://github.com/evevdigital-arch");
+    
     // Initialize Lucide Icons
     lucide.createIcons();
     
